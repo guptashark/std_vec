@@ -56,3 +56,14 @@ void std_vec_print(std_vec *v, void (*type_printer)(void *)) {
 
 	printf("\n");
 }
+
+bool std_vec_all_of(std_vec *v, bool (*unary_predicate)(void *)) {
+	size_t i = 0;
+	bool all_true = true;
+	while (i < v->size && all_true) {
+		all_true = unary_predicate(v->data + v->type_size * i);
+		i++;
+	}
+
+	return all_true;
+}

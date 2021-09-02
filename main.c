@@ -1,9 +1,21 @@
 #include <stdio.h>
+#include <stdbool.h>
+#include <assert.h>
 
 #include "std_vec.h"
 
 static void print_int(void *n) {
 	printf("%d", *(int *)n);
+}
+
+static bool is_not_negative(void *n) {
+	int x = *(int *)n;
+	return x >= 0;
+}
+
+static bool is_positive(void *n) {
+	int x = *(int *)n;
+	return x > 0;
 }
 
 int main(int argc, char *argv[]) {
@@ -19,6 +31,9 @@ int main(int argc, char *argv[]) {
 	for (int i = 0; i < 20; ++i) {
 		std_vec_push_back(&v, &i);
 	}
+
+	assert(std_vec_all_of(&v, is_not_negative));
+	assert(!std_vec_all_of(&v, is_positive));
 
 	std_vec v_02;
 	std_vec_ctor_copy(&v_02, &v);

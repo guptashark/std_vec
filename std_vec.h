@@ -1,6 +1,7 @@
 #ifndef STD_VEC_H_
 #define STD_VEC_H_
 
+#include <stdbool.h>
 #include <stddef.h>
 
 // TODO Create a policy for increasing array size,
@@ -23,5 +24,8 @@ void std_vec_dtor(std_vec *v);
 void std_vec_print(std_vec *v, void (*type_printer)(void *));
 
 void std_vec_push_back(std_vec *v, void *obj);
+
+// Algorithms
+bool std_vec_all_of(std_vec *v, bool (*unary_predicate)(void *));
 
 #endif
