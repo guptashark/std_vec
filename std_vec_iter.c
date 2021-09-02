@@ -7,3 +7,7 @@ bool std_vec_iter_eq(std_vec_iter *a, std_vec_iter *b) {
 bool std_vec_iter_neq(std_vec_iter *a, std_vec_iter *b) {
 	return a->pos != b->pos;
 }
+
+void std_vec_iter_inc(std_vec_iter *it) {
+	it->pos++;
+}
