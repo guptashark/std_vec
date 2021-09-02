@@ -20,7 +20,12 @@ int main(int argc, char *argv[]) {
 		std_vec_push_back(&v, &i);
 	}
 
+	std_vec v_02;
+	std_vec_ctor_copy(&v_02, &v);
+
 	std_vec_print(&v, print_int);
+
+	std_vec_print(&v_02, print_int);
 
 	std_vec_dtor(&v);
 

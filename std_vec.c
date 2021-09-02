@@ -14,6 +14,15 @@ void std_vec_ctor_default(std_vec *v, size_t type_size) {
 	v->data = malloc(type_size * v->capacity);
 }
 
+void std_vec_ctor_copy(std_vec *v, std_vec *other) {
+	v->type_size = other->type_size;
+	v->capacity = other->capacity;
+	v->size = other->size;
+
+	v->data = malloc(v->type_size * v->capacity);
+	memcpy(v->data, other->data, v->type_size * v->size);
+}
+
 void std_vec_dtor(std_vec *v) {
 	free(v->data);
 }

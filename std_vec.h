@@ -16,6 +16,8 @@ typedef struct std_vec {
 // TODO change type to allow returning error codes?
 void std_vec_ctor_default(std_vec *v, size_t type_size);
 
+void std_vec_ctor_copy(std_vec *v, std_vec *other);
+
 void std_vec_dtor(std_vec *v);
 
 void std_vec_print(std_vec *v, void (*type_printer)(void *));
