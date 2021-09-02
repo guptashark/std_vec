@@ -18,6 +18,11 @@ static bool is_positive(void *n) {
 	return x > 0;
 }
 
+static void mult_two(void *n) {
+	int *p = (int *)n;
+	*p = (*p) * 2;
+}
+
 int main(int argc, char *argv[]) {
 
 	(void)argc;
@@ -41,6 +46,10 @@ int main(int argc, char *argv[]) {
 	std_vec_print(&v, print_int);
 
 	std_vec_print(&v_02, print_int);
+
+	std_vec_for_each(&v, mult_two);
+
+	std_vec_print(&v, print_int);
 
 	std_vec_dtor(&v);
 

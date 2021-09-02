@@ -28,4 +28,6 @@ void std_vec_push_back(std_vec *v, void *obj);
 // Algorithms
 bool std_vec_all_of(std_vec *v, bool (*unary_predicate)(void *));
 
+void std_vec_for_each(std_vec *v, void (*unary_fn)(void *));
+
 #endif

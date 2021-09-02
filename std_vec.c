@@ -67,3 +67,9 @@ bool std_vec_all_of(std_vec *v, bool (*unary_predicate)(void *)) {
 
 	return all_true;
 }
+
+void std_vec_for_each(std_vec *v, void (*unary_fn)(void *)) {
+	for (size_t i = 0; i < v->size; ++i) {
+		unary_fn(v->data + i * v->type_size);
+	}
+}
