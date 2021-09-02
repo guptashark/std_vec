@@ -3,6 +3,9 @@
 
 #include <stddef.h>
 
+// TODO Create a policy for increasing array size,
+// and allow user to set it.
+
 typedef struct std_vec {
 	size_t type_size;
 	size_t capacity;
@@ -14,5 +17,7 @@ typedef struct std_vec {
 void std_vec_ctor_default(std_vec *v, size_t type_size);
 
 void std_vec_dtor(std_vec *v);
+
+void std_vec_push_back(std_vec *v, void *obj);
 
 #endif
