@@ -7,6 +7,10 @@
 // TODO Create a policy for increasing array size,
 // and allow user to set it.
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 typedef struct std_vec {
 	size_t type_size;
 	size_t capacity;
@@ -29,5 +33,9 @@ void std_vec_push_back(std_vec *v, void *obj);
 bool std_vec_all_of(std_vec *v, bool (*unary_predicate)(void *));
 
 void std_vec_for_each(std_vec *v, void (*unary_fn)(void *));
+
+#ifdef __cplusplus
+} // extern "C"
+#endif
 
 #endif
