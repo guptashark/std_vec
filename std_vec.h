@@ -1,6 +1,8 @@
 #ifndef STD_VEC_H_
 #define STD_VEC_H_
 
+#include "std_vec_iter.h"
+
 #include <stddef.h>
 
 // TODO Create a policy for increasing array size,
@@ -20,6 +22,12 @@ void std_vec_ctor_copy(std_vec *v, std_vec *other);
 
 void std_vec_dtor(std_vec *v);
 
+// Iterators
+std_vec_iter std_vec_begin(std_vec *v);
+
+std_vec_iter std_vec_end(std_vec *v);
+
+// Modifiers
 void std_vec_print(std_vec *v, void (*type_printer)(void *));
 
 void std_vec_push_back(std_vec *v, void *obj);

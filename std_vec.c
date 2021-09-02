@@ -27,6 +27,17 @@ void std_vec_dtor(std_vec *v) {
 	free(v->data);
 }
 
+// Iterators
+std_vec_iter std_vec_begin(std_vec *v) {
+	std_vec_iter it = {0};
+	return it;
+}
+
+std_vec_iter std_vec_end(std_vec *v) {
+	std_vec_iter it = {v->size + 1};
+	return it;
+}
+
 static void increase_capacity(std_vec *v) {
 	v->capacity = v->capacity + 8;
 	unsigned char *nd = malloc(v->type_size * v->capacity);
