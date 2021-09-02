@@ -1,5 +1,6 @@
 #include "std_vec.h"
 
+#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 
@@ -36,4 +37,13 @@ void std_vec_push_back(std_vec *v, void *obj) {
 	offset = v->data + v->size * v->type_size;
 	memcpy(v->data + v->size * v->type_size, obj, v->type_size);
 	v->size++;
+}
+
+void std_vec_print(std_vec *v, void (*type_printer)(void *)) {
+	for (size_t i = 0; i < v->size; ++i) {
+		type_printer(v->data + v->type_size * i);
+		printf(" ");
+	}
+
+	printf("\n");
 }

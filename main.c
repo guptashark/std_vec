@@ -2,6 +2,10 @@
 
 #include "std_vec.h"
 
+static void print_int(void *n) {
+	printf("%d", *(int *)n);
+}
+
 int main(int argc, char *argv[]) {
 
 	(void)argc;
@@ -15,6 +19,8 @@ int main(int argc, char *argv[]) {
 	for (int i = 0; i < 20; ++i) {
 		std_vec_push_back(&v, &i);
 	}
+
+	std_vec_print(&v, print_int);
 
 	std_vec_dtor(&v);
 

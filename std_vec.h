@@ -18,6 +18,8 @@ void std_vec_ctor_default(std_vec *v, size_t type_size);
 
 void std_vec_dtor(std_vec *v);
 
+void std_vec_print(std_vec *v, void (*type_printer)(void *));
+
 void std_vec_push_back(std_vec *v, void *obj);
 
 #endif
