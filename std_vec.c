@@ -27,6 +27,32 @@ void std_vec_dtor(std_vec *v) {
 	free(v->data);
 }
 
+// TODO What happens when the pos is larger than the size?
+void std_vec_at(std_vec *v, size_t pos, void *dst) {
+	memcpy(dst, v->data + v->type_size * pos, v->type_size);
+}
+
+// TODO What happens when the pos is larger than the size?
+void *std_vec_at_ptr(std_vec *v, size_t pos) {
+	return v->data + v->type_size * pos;
+}
+
+void std_vec_front(std_vec *v, void *dst) {
+	memcpy(dst, v->data, v->type_size);
+}
+
+void *std_vec_front_ptr(std_vec *v) {
+	return v->data;
+}
+
+void std_vec_back(std_vec *v, void *dst) {
+	memcpy(dst, v->data + v->type_size * (v->size - 1), v->type_size);
+}
+
+void *std_vec_back_ptr(std_vec *v) {
+	return v->data + v->type_size * (v->size - 1);
+}
+
 static void increase_capacity(std_vec *v) {
 	v->capacity = v->capacity + 8;
 	unsigned char *nd = malloc(v->type_size * v->capacity);

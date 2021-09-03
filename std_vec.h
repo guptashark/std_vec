@@ -25,6 +25,19 @@ void std_vec_ctor_copy(std_vec *v, std_vec *other);
 
 void std_vec_dtor(std_vec *v);
 
+// Element access
+void std_vec_at(std_vec *v, size_t pos, void *dst);
+
+void *std_vec_at_ptr(std_vec *v, size_t pos);
+
+void std_vec_front(std_vec *v, void *dst);
+
+void *std_vec_front_ptr(std_vec *v);
+
+void std_vec_back(std_vec *v, void *dst);
+
+void *std_vec_back_ptr(std_vec *v);
+
 void std_vec_print(std_vec *v, void (*type_printer)(void *));
 
 void std_vec_push_back(std_vec *v, void *obj);

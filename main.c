@@ -23,6 +23,36 @@ static void mult_two(void *n) {
 	*p = (*p) * 2;
 }
 
+static void vec_test_01(void) {
+	std_vec vec_obj;
+	std_vec *v = &vec_obj;
+	std_vec_ctor_default(v, sizeof(int));
+
+	for (int i = 7; i < 15; ++i) {
+		std_vec_push_back(v, &i);
+	}
+
+	{
+		int back;
+		std_vec_back(v, &back);
+		assert(back == 14);
+
+		int front;
+		std_vec_front(v, &front);
+		assert(front == 7);
+	}
+
+	{
+		int *back_ptr = std_vec_back_ptr(v);
+		assert(*back_ptr == 14);
+
+		int *front_ptr = std_vec_front_ptr(v);
+		assert(*front_ptr == 7);
+	}
+
+	std_vec_dtor(v);
+}
+
 int main(int argc, char *argv[]) {
 
 	(void)argc;
@@ -52,6 +82,8 @@ int main(int argc, char *argv[]) {
 	std_vec_print(&v, print_int);
 
 	std_vec_dtor(&v);
+
+	vec_test_01();
 
 	return 0;
 }
