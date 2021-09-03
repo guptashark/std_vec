@@ -53,6 +53,18 @@ void *std_vec_back_ptr(std_vec *v) {
 	return v->data + v->type_size * (v->size - 1);
 }
 
+bool std_vec_empty(std_vec *v) {
+	return v->size == 0;
+}
+
+size_t std_vec_size(std_vec *v) {
+	return v->size;
+}
+
+size_t std_vec_capacity(std_vec *v) {
+	return v->capacity;
+}
+
 static void increase_capacity(std_vec *v) {
 	v->capacity = v->capacity + 8;
 	unsigned char *nd = malloc(v->type_size * v->capacity);

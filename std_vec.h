@@ -38,8 +38,16 @@ void std_vec_back(std_vec *v, void *dst);
 
 void *std_vec_back_ptr(std_vec *v);
 
+// Capacity
+bool std_vec_empty(std_vec *v);
+
+size_t std_vec_size(std_vec *v);
+
+size_t std_vec_capacity(std_vec *v);
+
 void std_vec_print(std_vec *v, void (*type_printer)(void *));
 
+// Modifiers
 void std_vec_push_back(std_vec *v, void *obj);
 
 // Algorithms
