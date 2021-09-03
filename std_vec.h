@@ -48,7 +48,11 @@ size_t std_vec_capacity(std_vec *v);
 void std_vec_print(std_vec *v, void (*type_printer)(void *));
 
 // Modifiers
+void std_vec_clear(std_vec *v);
+
 void std_vec_push_back(std_vec *v, void *obj);
+
+void std_vec_pop_back(std_vec *v);
 
 // Algorithms
 bool std_vec_all_of(std_vec *v, bool (*unary_predicate)(void *));

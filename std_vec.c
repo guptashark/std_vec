@@ -75,6 +75,11 @@ static void increase_capacity(std_vec *v) {
 	v->data = nd;
 }
 
+void std_vec_clear(std_vec *v) {
+	memset(v->data, 0, v->type_size * v->size);
+	v->size = 0;
+}
+
 void std_vec_push_back(std_vec *v, void *obj) {
 	if (v->size == v->capacity) {
 		increase_capacity(v);
@@ -84,6 +89,16 @@ void std_vec_push_back(std_vec *v, void *obj) {
 	offset = v->data + v->size * v->type_size;
 	memcpy(v->data + v->size * v->type_size, obj, v->type_size);
 	v->size++;
+}
+
+// TODO: Document that popback on an empty vector is undefined.
+// TODO: Document that this is "safe" in that it clears out the
+//       memory of whatever was deleted so that anyone holding
+//       a ptr to it will immediately know, vs having their data
+//       stomped over later.
+void std_vec_pop_back(std_vec *v) {
+	v->size--;
+	memset(v->data + v->type_size * v->size, 0, v->type_size);
 }
 
 void std_vec_print(std_vec *v, void (*type_printer)(void *)) {
