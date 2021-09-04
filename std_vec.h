@@ -30,6 +30,8 @@ void std_vec_at(std_vec *v, size_t pos, void *dst);
 
 void *std_vec_at_ptr(std_vec *v, size_t pos);
 
+void std_vec_set_at(std_vec *v, size_t pos, void *obj);
+
 void std_vec_front(std_vec *v, void *dst);
 
 void *std_vec_front_ptr(std_vec *v);

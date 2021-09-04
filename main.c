@@ -23,6 +23,29 @@ static void mult_two(void *n) {
 	*p = (*p) * 2;
 }
 
+static void vec_test_basic(void) {
+
+	std_vec v;
+	std_vec_ctor_default(&v, sizeof(int));
+
+	for (int i = 0; i < 20; ++i) {
+		std_vec_push_back(&v, &i);
+	}
+
+	assert(std_vec_all_of(&v, is_not_negative));
+	assert(!std_vec_all_of(&v, is_positive));
+
+	std_vec v_02;
+	std_vec_ctor_copy(&v_02, &v);
+
+	std_vec_for_each(&v, mult_two);
+
+	std_vec_print(&v, print_int);
+
+	std_vec_dtor(&v);
+	std_vec_dtor(&v_02);
+}
+
 static void vec_test_01(void) {
 	std_vec vec_obj;
 	std_vec *v = &vec_obj;
@@ -53,6 +76,27 @@ static void vec_test_01(void) {
 	std_vec_dtor(v);
 }
 
+static void vec_test_02(void) {
+
+	std_vec vec_obj;
+	std_vec *v = &vec_obj;
+	std_vec_ctor_default(v, sizeof(int));
+
+	for (int i = 0; i < 10; ++i) {
+		int x = i + 1;
+		std_vec_push_back(v, &x);
+	}
+
+	// We want to do a shift of all the elements to the right
+	// by 1, so that we can put 0 into the first spot.
+	// (Essentially a push front).
+
+	int y = 5;
+	std_vec_set_at(v, 0, &y);
+
+	std_vec_print(v, print_int);
+}
+
 int main(int argc, char *argv[]) {
 
 	(void)argc;
@@ -60,30 +104,9 @@ int main(int argc, char *argv[]) {
 
 	printf("std_vec version 0.01\n");
 
-	std_vec v;
-	std_vec_ctor_default(&v, sizeof(int));
-
-	for (int i = 0; i < 20; ++i) {
-		std_vec_push_back(&v, &i);
-	}
-
-	assert(std_vec_all_of(&v, is_not_negative));
-	assert(!std_vec_all_of(&v, is_positive));
-
-	std_vec v_02;
-	std_vec_ctor_copy(&v_02, &v);
-
-	std_vec_print(&v, print_int);
-
-	std_vec_print(&v_02, print_int);
-
-	std_vec_for_each(&v, mult_two);
-
-	std_vec_print(&v, print_int);
-
-	std_vec_dtor(&v);
-
+	vec_test_basic();
 	vec_test_01();
+	vec_test_02();
 
 	return 0;
 }
